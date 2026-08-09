@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chike Okigbo &mdash; Cloud Engineer</title>
+  <meta name="description" content="The personal log of a cloud engineer. Projects, labs, and certifications by Chike Okigbo.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div data-include="partials/nav.html"></div>
+
+  <main>
+    <section class="hero container">
+      <h1 class="hero__name fade-in">chike okigbo</h1>
+      <p class="hero__subhead fade-in delay-1">The Personal Log Of A Cloud Engineer</p>
+      <div class="hero__date fade-in delay-2">
+        <strong id="today">Today</strong>
+        <span class="sep">|</span>
+        <span>Vol. I</span>
+        <span class="sep">&middot;</span>
+        <span>Est. 2026</span>
+      </div>
+      <div class="hero__cta fade-in delay-3">
+        <a href="portfolio.html" class="btn btn--primary">
+          View portfolio <span class="btn__arrow">&rarr;</span>
+        </a>
+        <a href="#contact" class="btn btn--ghost">
+          Get in touch
+        </a>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-heading">Featured Projects</h2>
+      <p class="section-lead">A selection from the cloud portfolio.</p>
+      <div id="featured-grid" class="deck-grid"></div>
+      <div style="margin-top: 2.5rem;">
+        <a href="portfolio.html" class="btn btn--ghost">
+          View all projects <span class="btn__arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <h2 class="section-heading">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact__label">Email</span>
+          <span class="contact__value"><a data-hydrate="email"></a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact__label">GitHub</span>
+          <span class="contact__value"><a data-hydrate="github"></a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact__label">LinkedIn</span>
+          <span class="contact__value"><a data-hydrate="linkedin"></a></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+
+  <script src="data/site.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="assets/js/cards.js"></script>
+  <script src="assets/js/includes.js"></script>
+  <script src="assets/js/home.js"></script>
+  <script src="assets/js/fog.js"></script>
+</body>
+</html>
