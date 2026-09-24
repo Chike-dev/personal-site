@@ -1,6 +1,6 @@
 /* =========================================================================
    Chike Okigbo — personal site
-   Dark-only. Chalk display (Kalam). Cloud fog atmosphere.
+   Warm light theme (earthy beige). Single family: Satoshi.
    ========================================================================= */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -20,22 +20,22 @@ a { color: inherit; text-decoration: none; }
    Tokens
    ========================================================================= */
 :root {
-  --bg:            #06090F;
-  --bg-elevated:   #0D1219;
-  --bg-inset:      #030507;
-  --fg:            #EDE8DE;
-  --fg-muted:      #97928A;
-  --fg-subtle:     #4B4842;
-  --border:        #1E262F;
-  --border-strong: #2A3542;
-  --accent:        #22D3EE;
-  --accent-hover:  #67E8F9;
+  --bg:            #F3ECD8;
+  --bg-elevated:   #FBF5E6;
+  --bg-inset:      #E7DFC8;
+  --fg:            #2A2418;
+  --fg-muted:      #6B6350;
+  --fg-subtle:     #A69C82;
+  --border:        #D9D0B7;
+  --border-strong: #C4B995;
+  --accent:        #0E7490;
+  --accent-hover:  #155E75;
   --chalk-warm:    #F0E6D1;
 
-  --font-chalk: "Kalam", "Comic Sans MS", cursive;
-  --font-body:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-chalk: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body:  "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:  "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --max-w:   1180px;
   --gutter:  clamp(1.25rem, 4vw, 2.5rem);
@@ -78,17 +78,6 @@ p:last-child { margin-bottom: 0; }
   z-index: 1;
 }
 
-/* =========================================================================
-   Fog canvas — fixed behind everything
-   ========================================================================= */
-.fog-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-}
 .nav, .masthead-line, .edition-strip, main, .footer { position: relative; z-index: 1; }
 
 /* =========================================================================
@@ -208,7 +197,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--font-chalk);
   font-weight: 700;
   font-size: var(--step-5);
-  color: var(--chalk-warm);
+  color: var(--fg);
   line-height: 1.02;
   margin-bottom: 1rem;
   max-width: 15ch;
@@ -270,7 +259,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--font-chalk);
   font-weight: 700;
   font-size: clamp(2.5rem, 6vw, 4.25rem);
-  color: var(--chalk-warm);
+  color: var(--fg);
   line-height: 1.05;
   margin-bottom: 1.25rem;
   text-shadow:
@@ -369,7 +358,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--font-chalk);
   font-weight: 700;
   font-size: clamp(1.75rem, 4vw, 2.75rem);
-  color: var(--chalk-warm);
+  color: var(--fg);
   line-height: 1.15;
   border-bottom: 1px solid var(--border-strong);
   padding-bottom: 1rem;
@@ -638,3 +627,529 @@ section { padding-block: clamp(3rem, 7vw, 5.5rem); }
   transition: border-color 160ms var(--ease), color 160ms var(--ease);
 }
 .toolbelt__tags span:hover { border-color: var(--accent); color: var(--accent); }
+
+/* =========================================================================
+   Lab cards (labs.html) — deck-style with themed animated covers
+   ========================================================================= */
+.lab {
+  display: flex;
+  flex-direction: column;
+  background: color-mix(in oklab, var(--bg-elevated) 82%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 220ms var(--ease), transform 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+.lab:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -12px rgba(34, 211, 238, 0.18);
+}
+
+/* --- Cover (animated, per coverType) --- */
+.lab-cover {
+  aspect-ratio: 16 / 10;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lab-cover__num {
+  position: absolute;
+  top: 0.85rem;
+  left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--chalk-warm);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  z-index: 2;
+}
+
+/* AWS Compliance — animated shield pulse */
+.lab-cover--aws-compliance {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255, 153, 0, 0.14), transparent 55%),
+    linear-gradient(135deg, #101822 0%, #1a2836 100%);
+}
+.lab-cover--aws-compliance::before {
+  content: "";
+  width: 34%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(255, 153, 0, 0.35), transparent 60%);
+  border-radius: 50%;
+  animation: pulse-ring 3.2s var(--ease) infinite;
+}
+.lab-cover--aws-compliance::after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  aspect-ratio: 1 / 1.15;
+  background: linear-gradient(180deg, #FF9900 0%, #EC7211 100%);
+  clip-path: polygon(50% 0, 100% 22%, 100% 65%, 50% 100%, 0 65%, 0 22%);
+  opacity: 0.85;
+  box-shadow: 0 0 24px rgba(255, 153, 0, 0.4);
+}
+
+/* AWS Storage (Nº 009 — VitalLiving) — stacked storage tiers cooling to Glacier */
+.lab-cover--aws-storage {
+  background:
+    radial-gradient(circle at 70% 15%, rgba(255, 153, 0, 0.16), transparent 55%),
+    radial-gradient(circle at 25% 90%, rgba(56, 189, 248, 0.16), transparent 55%),
+    linear-gradient(135deg, #101822 0%, #1a2836 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-cover--aws-storage::before {
+  content: "";
+  position: absolute;
+  width: 46%; height: 68%;
+  top: 16%; left: 27%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 260'%3E%3Cg%3E%3Crect x='30' y='30' width='140' height='30' fill='%23EC7211'/%3E%3Cellipse cx='100' cy='30' rx='70' ry='14' fill='%23FF9900'/%3E%3Cellipse cx='100' cy='60' rx='70' ry='14' fill='%23FF9900' opacity='0.55'/%3E%3Crect x='30' y='115' width='140' height='30' fill='%23B45309'/%3E%3Cellipse cx='100' cy='115' rx='70' ry='14' fill='%23F59E0B'/%3E%3Cellipse cx='100' cy='145' rx='70' ry='14' fill='%23F59E0B' opacity='0.55'/%3E%3Crect x='30' y='200' width='140' height='30' fill='%230284C7'/%3E%3Cellipse cx='100' cy='200' rx='70' ry='14' fill='%2338BDF8'/%3E%3Cellipse cx='100' cy='230' rx='70' ry='14' fill='%2338BDF8' opacity='0.55'/%3E%3C/g%3E%3C/svg%3E");
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+}
+.lab-cover--aws-storage::after {
+  /* Small orb cascading down through the tiers, cooling as it descends */
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #FF9900;
+  box-shadow: 0 0 14px rgba(255, 153, 0, 0.85);
+  animation: aws-cascade 4.4s ease-in-out infinite;
+}
+@keyframes aws-cascade {
+  0%   { top: 20%; background: #FF9900; box-shadow: 0 0 14px rgba(255,153,0,0.85); opacity: 0; }
+  10%  { opacity: 1; }
+  33%  { top: 44%; background: #F59E0B; box-shadow: 0 0 14px rgba(245,158,11,0.85); opacity: 1; }
+  66%  { top: 68%; background: #38BDF8; box-shadow: 0 0 14px rgba(56,189,248,0.85); opacity: 1; }
+  85%  { top: 78%; opacity: 0; }
+  100% { top: 78%; opacity: 0; }
+}
+
+/* AWS HA (Nº 010 — EVIL Bank) — ALB fanning traffic across three AZ pillars */
+.lab-cover--aws-ha {
+  background:
+    radial-gradient(circle at 50% 15%, rgba(255, 153, 0, 0.16), transparent 55%),
+    linear-gradient(135deg, #101822 0%, #1a2836 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-cover--aws-ha::before {
+  content: "";
+  position: absolute;
+  width: 62%; height: 66%;
+  top: 18%; left: 19%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cpath d='M150,10 L185,55 L115,55 Z' fill='%23FF9900'/%3E%3Cpath d='M150,55 L50,90 M150,55 L150,90 M150,55 L250,90' stroke='%23FF9900' stroke-width='1.5' stroke-opacity='0.5' fill='none'/%3E%3Crect x='30' y='90' width='40' height='100' fill='%23EC7211'/%3E%3Crect x='130' y='90' width='40' height='100' fill='%23EC7211'/%3E%3Crect x='230' y='90' width='40' height='100' fill='%23EC7211'/%3E%3Crect x='30' y='90' width='40' height='6' fill='%23FF9900'/%3E%3Crect x='130' y='90' width='40' height='6' fill='%23FF9900'/%3E%3Crect x='230' y='90' width='40' height='6' fill='%23FF9900'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 5px 14px rgba(255, 153, 0, 0.28));
+}
+.lab-cover--aws-ha::after {
+  /* Request dot round-robin jumping between the three AZ pillar tops */
+  content: "";
+  position: absolute;
+  top: 48%;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.95);
+  animation: aws-ha-roundrobin 3s steps(1, end) infinite;
+}
+@keyframes aws-ha-roundrobin {
+  0%,   33% { left: 30%; }
+  33.01%, 66% { left: 50%; }
+  66.01%, 100% { left: 70%; }
+}
+
+/* Azure — actual cloud silhouettes drifting across */
+.lab-cover--azure-cloud {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(120, 200, 255, 0.10), transparent 55%),
+    linear-gradient(135deg, #0A2540 0%, #1E4C8B 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-cover--azure-cloud::before,
+.lab-cover--azure-cloud::after {
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  /* Cloud silhouette: multiple soft round bumps forming an actual cloud shape */
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Cpath d='M50,80 C22,80 15,60 30,50 C22,32 42,20 58,28 C68,10 100,10 112,28 C130,18 155,30 152,48 C175,50 178,78 155,80 Z' fill='rgba(180,220,255,0.42)'/%3E%3C/svg%3E");
+  filter: blur(0.6px);
+}
+.lab-cover--azure-cloud::before {
+  width: 55%; height: 45%;
+  top: 22%; left: -15%;
+  animation: drift-right 22s linear infinite;
+}
+.lab-cover--azure-cloud::after {
+  width: 42%; height: 36%;
+  top: 55%; left: -20%;
+  opacity: 0.7;
+  animation: drift-right 28s linear infinite;
+  animation-delay: -12s;
+}
+
+/* Network Design — animated topology nodes */
+.lab-cover--network-design {
+  background: linear-gradient(135deg, #0B1220 0%, #131E30 100%);
+  position: relative;
+}
+.lab-cover--network-design::before {
+  content: "";
+  position: absolute;
+  inset: 20% 15%;
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--accent) 0 3px, transparent 4px),
+    radial-gradient(circle at 80% 30%, var(--accent) 0 3px, transparent 4px),
+    radial-gradient(circle at 50% 70%, var(--accent) 0 3px, transparent 4px),
+    radial-gradient(circle at 20% 90%, var(--accent) 0 3px, transparent 4px),
+    radial-gradient(circle at 80% 90%, var(--accent) 0 3px, transparent 4px);
+  opacity: 0.85;
+}
+.lab-cover--network-design::after {
+  content: "";
+  position: absolute;
+  inset: 20% 15%;
+  background-image:
+    linear-gradient(to right, transparent 20%, rgba(34, 211, 238, 0.45) 20%, rgba(34, 211, 238, 0.45) 80%, transparent 80%),
+    linear-gradient(155deg, transparent 45%, rgba(34, 211, 238, 0.30) 45%, rgba(34, 211, 238, 0.30) 55%, transparent 55%),
+    linear-gradient(25deg,  transparent 45%, rgba(34, 211, 238, 0.30) 45%, rgba(34, 211, 238, 0.30) 55%, transparent 55%);
+  background-size: 100% 1px, 100% 100%, 100% 100%;
+  background-position: 50% 30%, 50% 60%, 50% 60%;
+  background-repeat: no-repeat;
+  animation: pulse-lines 2.4s ease-in-out infinite;
+}
+
+/* Security Analysis — radar sweep */
+.lab-cover--security-analysis {
+  background: linear-gradient(135deg, #150B14 0%, #2A1420 100%);
+  position: relative;
+}
+.lab-cover--security-analysis::before {
+  content: "";
+  position: absolute;
+  width: 60%; aspect-ratio: 1 / 1;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 30px rgba(248, 113, 113, 0.05),
+    0 0 0 30px rgba(248, 113, 113, 0.05);
+}
+.lab-cover--security-analysis::after {
+  content: "";
+  position: absolute;
+  width: 60%; aspect-ratio: 1 / 1;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(248, 113, 113, 0.5) 30deg, transparent 60deg);
+  border-radius: 50%;
+  animation: radar-sweep 3.5s linear infinite;
+}
+
+/* Packet Tracer — terminal-esque green flow */
+.lab-cover--packet-tracer {
+  background: linear-gradient(135deg, #061510 0%, #0D2A1E 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-cover--packet-tracer::before {
+  content: ">_ tracing packets";
+  color: rgba(74, 222, 128, 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+.lab-cover--packet-tracer::after {
+  content: "";
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4ADE80;
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.8);
+  top: 40%;
+  animation: packet-flow 2.6s linear infinite;
+}
+
+/* Docker — Moby Dock whale with cargo containers + pulsing load meter (DoS lab) */
+.lab-cover--docker {
+  background:
+    radial-gradient(circle at 65% 40%, rgba(29, 99, 237, 0.22), transparent 55%),
+    linear-gradient(135deg, #06121F 0%, #0E2A4E 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-cover--docker::before {
+  content: "";
+  position: absolute;
+  width: 62%; height: 62%;
+  top: 15%; left: 19%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 260'%3E%3Cg fill='%234FA3FF'%3E%3Crect x='80' y='130' width='42' height='42' rx='2'/%3E%3Crect x='127' y='130' width='42' height='42' rx='2'/%3E%3Crect x='174' y='130' width='42' height='42' rx='2'/%3E%3Crect x='221' y='130' width='42' height='42' rx='2'/%3E%3Crect x='268' y='130' width='42' height='42' rx='2'/%3E%3Crect x='127' y='83' width='42' height='42' rx='2'/%3E%3Crect x='174' y='83' width='42' height='42' rx='2'/%3E%3Crect x='221' y='83' width='42' height='42' rx='2'/%3E%3C/g%3E%3Cpath d='M 30,200 Q 30,175 65,175 L 320,175 Q 350,175 365,195 L 385,200 L 365,205 Q 350,220 320,220 L 65,220 Q 30,220 30,200 Z' fill='%231D63ED'/%3E%3Ccircle cx='70' cy='188' r='3' fill='white'/%3E%3Ccircle cx='70' cy='188' r='1.5' fill='%230A1929'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 6px 18px rgba(29, 99, 237, 0.35));
+}
+.lab-cover--docker::after {
+  /* Load meter along the bottom — width pulses to visualize DoS load */
+  content: "";
+  position: absolute;
+  left: 15%; bottom: 12%;
+  height: 5px;
+  background: linear-gradient(90deg, #4ADE80 0%, #FBBF24 55%, #F87171 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(248, 113, 113, 0.55);
+  animation: docker-load 2.4s ease-in-out infinite;
+}
+@keyframes docker-load {
+  0%, 100% { width: 22%; }
+  50%      { width: 68%; }
+}
+
+/* Network Scale (Nº 004 — CSUN Campus IT) — concentric sonar rings from a hub */
+.lab-cover--network-scale {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.10), transparent 60%),
+    linear-gradient(135deg, #060B18 0%, #101C2E 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-cover--network-scale::before,
+.lab-cover--network-scale::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  border: 1px solid rgba(34, 211, 238, 0.6);
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  animation: sonar-out 3.2s cubic-bezier(0.2, 0.65, 0.3, 1) infinite;
+}
+.lab-cover--network-scale::after {
+  animation-delay: 1.6s;
+}
+@keyframes sonar-out {
+  0%   { width: 12%; opacity: 1;   border-width: 2px; }
+  100% { width: 95%; opacity: 0;   border-width: 0.5px; }
+}
+
+/* Network Tiered (Nº 005 — MSU 3-tier) — three tier lines with animated packet */
+.lab-cover--network-tiered {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.10), transparent 55%),
+    linear-gradient(135deg, #0A1220 0%, #131E30 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-cover--network-tiered::before {
+  /* Three glowing horizontal tier lines: core (top), distribution (mid), access (bottom) */
+  content: "";
+  position: absolute;
+  left: 12%; right: 12%;
+  top: 22%; bottom: 22%;
+  background:
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05), rgba(34, 211, 238, 0.6), rgba(34, 211, 238, 0.05)) 0 0%   / 100% 2px no-repeat,
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05), rgba(34, 211, 238, 0.6), rgba(34, 211, 238, 0.05)) 0 50%  / 100% 2px no-repeat,
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05), rgba(34, 211, 238, 0.6), rgba(34, 211, 238, 0.05)) 0 100% / 100% 2px no-repeat;
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.4));
+}
+.lab-cover--network-tiered::after {
+  /* Packet moving vertically through the tiers */
+  content: "";
+  position: absolute;
+  left: 35%;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.9);
+  animation: tier-hop 3.4s ease-in-out infinite;
+}
+@keyframes tier-hop {
+  0%, 100% { top: 22%; }
+  25%      { top: 47%; }
+  50%      { top: 72%; }
+  75%      { top: 47%; }
+}
+
+/* Default cover fallback */
+.lab-cover--default,
+.lab-cover:not([class*="lab-cover--"]) {
+  background: linear-gradient(135deg, #1B222A 0%, #0D1219 100%);
+}
+
+/* Keyframes for the cover animations */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); opacity: 0.7; }
+  70%  { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@keyframes drift-right {
+  0%   { transform: translateX(-40%); }
+  100% { transform: translateX(280%); }
+}
+@keyframes pulse-lines {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+@keyframes radar-sweep {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes packet-flow {
+  0%   { left: -5%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 105%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-cover--aws-compliance::before,
+  .lab-cover--aws-storage::after,
+  .lab-cover--aws-ha::after,
+  .lab-cover--azure-cloud::before,
+  .lab-cover--azure-cloud::after,
+  .lab-cover--network-design::after,
+  .lab-cover--network-scale::before,
+  .lab-cover--network-scale::after,
+  .lab-cover--network-tiered::after,
+  .lab-cover--security-analysis::after,
+  .lab-cover--packet-tracer::after,
+  .lab-cover--docker::after { animation: none; }
+}
+
+/* Card body */
+.lab__body {
+  padding: 1.5rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+.lab__meta {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0;
+}
+.lab__title {
+  font-family: var(--font-chalk);
+  font-weight: 700;
+  font-size: 1.55rem;
+  line-height: 1.15;
+  color: var(--fg);
+  margin: 0;
+}
+.lab__subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--fg-muted);
+  line-height: 1.35;
+  margin: 0;
+}
+.lab__desc {
+  color: var(--fg-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+}
+.lab__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+}
+.lab__tags span {
+  padding: 0.18rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+.lab__credit {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--fg-subtle);
+  padding: 0.75rem;
+  border-left: 2px solid var(--accent);
+  background: color-mix(in oklab, var(--bg-inset) 55%, transparent);
+  margin: 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.lab__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+.lab__link {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  align-self: flex-start;
+  transition: border-color 160ms var(--ease);
+}
+.lab__link:hover { border-bottom-color: var(--accent); }
+.lab__link--pending {
+  color: var(--fg-subtle);
+  border-bottom-color: transparent;
+  cursor: default;
+}
+.lab__downloads summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed var(--border);
+  list-style: none;
+}
+.lab__downloads summary::-webkit-details-marker { display: none; }
+.lab__downloads summary::before {
+  content: "+ ";
+  color: var(--accent);
+  font-weight: 700;
+}
+.lab__downloads[open] summary::before { content: "\2212 "; }
+.lab__downloads ul {
+  list-style: none;
+  padding: 0.6rem 0 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+.lab__downloads a {
+  color: var(--fg);
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 1px;
+  transition: color 160ms var(--ease), border-color 160ms var(--ease);
+}
+.lab__downloads a:hover { color: var(--accent); border-color: var(--accent); }

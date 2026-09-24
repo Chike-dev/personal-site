@@ -16,6 +16,12 @@ desktop.ini
 # Netlify
 .netlify/
 
+# Raw lab drops (originals stay local; only polished PDFs in /labs are published)
+labs-source/
+
+# Screenshot drops for Claude review (local only)
+have a look-source/
+
 # Node (in case you add tooling later)
 node_modules/
 npm-debug.log
