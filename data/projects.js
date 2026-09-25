@@ -23,7 +23,7 @@ window.PROJECTS = [
   {
     number: "002",
     title: "Another project",
-    description: "Placeholder description. Each card lives in data/projects.js and renders here automatically. Swap this text for your real project details.",
+    description: "Building…",
     tags: ["Docker", "CI/CD", "GitHub Actions"],
     image: null,
     github: null,
@@ -32,7 +32,7 @@ window.PROJECTS = [
   {
     number: "003",
     title: "Third project",
-    description: "You can add screenshots by dropping images into images/projects/ and referencing them in the image field of this entry.",
+    description: "In Planning…",
     tags: ["Kubernetes", "AWS EKS"],
     image: null,
     github: null,
@@ -41,7 +41,7 @@ window.PROJECTS = [
   {
     number: "004",
     title: "Fourth project",
-    description: "Each card supports a title, description, tag list, and optional GitHub and live-demo links.",
+    description: "In Planning…",
     tags: ["Security", "IAM", "AWS"],
     image: null,
     github: null,
@@ -50,7 +50,7 @@ window.PROJECTS = [
   {
     number: "005",
     title: "Fifth project",
-    description: "Placeholder copy. When you have real projects to add, delete these entries and add new ones in the same shape.",
+    description: "In Planning…",
     tags: ["Serverless", "Lambda"],
     image: null,
     github: null,
@@ -59,7 +59,7 @@ window.PROJECTS = [
   {
     number: "006",
     title: "Sixth project",
-    description: "The grid grows or shrinks with the number of entries you have here. Six is a good starting point for a full deck.",
+    description: "In Planning…",
     tags: ["Networking", "VPC"],
     image: null,
     github: null,
