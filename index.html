@@ -3,51 +3,248 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chike Okigbo &mdash; Cloud Engineer</title>
+  <meta name="color-scheme" content="light">
+  <title>Chike Okigbo | Cloud Engineer</title>
   <meta name="description" content="The personal log of a cloud engineer. Projects, labs, and certifications by Chike Okigbo.">
 
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=10">
 </head>
-<body>
-  <div data-include="partials/nav.html"></div>
+<body id="top">
+  <div data-include="partials/nav.html?v=10"></div>
 
   <main>
     <section class="hero container">
-      <h1 class="hero__name fade-in">Chike Okigbo</h1>
-      <p class="hero__subhead fade-in delay-1">The Personal Log of a Cloud Engineer</p>
-      <div class="hero__date fade-in delay-2">
-        <strong id="today">Today</strong>
-        <span class="sep">|</span>
-        <span>Vol. I</span>
-        <span class="sep">&middot;</span>
-        <span>Est. 2026</span>
+      <div class="masthead fade-in">
+        <div class="masthead__band">
+          <span class="masthead__title">Engineer Log</span>
+          <span class="masthead__meta">Issue 001 &middot; Vol. I &middot; Est. 2026</span>
+        </div>
+        <div class="masthead__band">
+          <span class="masthead__date"><strong id="today">Today</strong></span>
+          <span class="masthead__loc">Los Angeles, CA</span>
+        </div>
       </div>
-      <div class="hero__cta fade-in delay-3">
-        <a href="portfolio.html" class="btn btn--primary">
-          View portfolio <span class="btn__arrow">&rarr;</span>
-        </a>
-        <a href="#contact" class="btn btn--ghost">
-          Get in touch
-        </a>
+      <div class="hero__grid">
+        <div class="hero__body">
+          <h1 class="hero__name fade-in">Hi, welcome to my page.</h1>
+          <p class="hero__intro fade-in delay-1">
+            My name is <strong>Chike Okigbo</strong>. I&rsquo;m an Information Technology Engineer with a special focus in Cloud Computing and Cybersecurity.
+          </p>
+          <p class="hero__intro fade-in delay-2">
+            Have a look. I hope you like what you see.
+          </p>
+          <div class="hero__cta fade-in delay-3">
+            <a href="#projects" class="btn btn--primary">
+              View projects <span class="btn__arrow">&rarr;</span>
+            </a>
+            <a href="#contact" class="btn btn--ghost">
+              Get in touch
+            </a>
+          </div>
+        </div>
+        <figure class="hero__portrait fade-in delay-1">
+          <img src="images/chike-portrait.jpg?v=2" alt="Chike Okigbo" onerror="this.style.display='none'; this.parentElement.dataset.placeholder='Portrait';">
+        </figure>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <h2 class="chapter-heading"><span class="chapter-heading__num">[01]</span>About</h2>
+      <div class="about-bio about-bio--summary">
+        <p>
+          Born and raised in Jos, Plateau State, Nigeria, now based in Los Angeles, California, USA. Right from a young age, I&rsquo;ve always been a tech enthusiast; I was always the kid who wanted to know what made things click and tick when it came to software, hardware, and people&hellip;lowkey.
+        </p>
+      </div>
+      <div class="view-more view-more--inline">
+        <button type="button" id="about-toggle" class="btn btn--ghost">
+          Read connection <span class="btn__arrow">&darr;</span>
+        </button>
+      </div>
+      <div class="about-bio about-bio--full" hidden>
+        <p>
+          I enjoyed setting up new systems at home and in school, be it new printers, monitors, or multimedia home setups, to setting up the wifi and creating user accounts for the new devices people around me got.
+        </p>
+        <p>
+          So when it came time to pick a career and what to study, it was no surprise that Computer Information Technology stood out to me; it is an intersection of software automation, hardware design, and operation, with a direct effect and interaction with individuals and businesses. And it was something I had experience in, and I find it interesting.
+        </p>
+        <p>
+          I have had a lot of &ldquo;wow&rdquo; moments in class, but one that I cannot forget was the day I sat in class and was playing around with physical machines that were on the other side of the world from my little terminal. Turning them on and off, and using what I want, when I want, if I see fit&hellip; that is where my focus in cloud computing started. As time went on, I learned how those machines affect people and businesses daily in ways I had never imagined, like Virtualization, IoT, Networking, and security.
+        </p>
+        <p>
+          What keeps me interested is how foundational Cloud infrastructure is. Most people never see it, but it sits behind nearly everything they use, and that role is only getting bigger. AI is a major reason for that, but it has also added to my curiosity, especially about what happens when you combine it with cloud Services like Lambda, EventBridge, and AWS Bedrock; you get systems that can react to events, interpret what&rsquo;s happening, and help automate decisions instead of executing a predefined set of steps.
+        </p>
+      </div>
+      <div class="about-bio about-bio--summary">
+        <p>
+          Now I simply focus on building and securing infrastructure in the cloud, where systems meet the people using them. I like learning how those systems are built, how they fail, and what it takes to keep them reliable and secure. This site is where I document what I build, break, and learn.
+        </p>
       </div>
     </section>
 
     <section class="container">
-      <h2 class="section-heading">Featured Projects</h2>
-      <p class="section-lead">A selection from the cloud portfolio.</p>
-      <div id="featured-grid" class="deck-grid"></div>
-      <div style="margin-top: 2.5rem;">
-        <a href="portfolio.html" class="btn btn--ghost">
-          View all projects <span class="btn__arrow">&rarr;</span>
+      <h2 class="section-heading">Toolbelt</h2>
+      <p class="section-lead">The stack I actually reach for.</p>
+      <div class="toolbelt">
+        <div class="toolbelt__group">
+          <h3 class="toolbelt__label">Cloud &amp; AWS Services</h3>
+          <div class="toolbelt__tags">
+            <span>AWS</span>
+            <span>S3</span>
+            <span>EC2</span>
+            <span>Lambda</span>
+            <span>DynamoDB</span>
+            <span>GuardDuty</span>
+            <span>IAM</span>
+            <span>CloudTrail</span>
+            <span>CloudWatch</span>
+            <span>EventBridge</span>
+            <span>Security Hub</span>
+            <span>SNS</span>
+            <span>VPC</span>
+            <span>Bedrock</span>
+          </div>
+        </div>
+
+        <div class="toolbelt__group">
+          <h3 class="toolbelt__label">Languages</h3>
+          <div class="toolbelt__tags">
+            <span>Python</span>
+            <span>Bash</span>
+            <span>YAML</span>
+          </div>
+        </div>
+
+        <div class="toolbelt__group">
+          <h3 class="toolbelt__label">Infrastructure as Code</h3>
+          <div class="toolbelt__tags">
+            <span>Terraform</span>
+            <span>CloudFormation</span>
+          </div>
+        </div>
+
+        <div class="toolbelt__group">
+          <h3 class="toolbelt__label">Containers &amp; Deployment</h3>
+          <div class="toolbelt__tags">
+            <span>Docker</span>
+            <span>Kubernetes</span>
+            <span>CI/CD</span>
+            <span>Git</span>
+          </div>
+        </div>
+
+        <div class="toolbelt__group">
+          <h3 class="toolbelt__label">Monitoring</h3>
+          <div class="toolbelt__tags">
+            <span>Grafana</span>
+            <span>Prometheus</span>
+          </div>
+        </div>
+
+        <div class="toolbelt__group">
+          <h3 class="toolbelt__label">Systems &amp; Networking</h3>
+          <div class="toolbelt__tags">
+            <span>Linux</span>
+            <span>Windows</span>
+            <span>Networking</span>
+          </div>
+        </div>
+
+        <div class="toolbelt__group">
+          <h3 class="toolbelt__label">AI</h3>
+          <div class="toolbelt__tags">
+            <span>Claude</span>
+            <span>ChatGPT</span>
+            <span>Gemini</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-heading">Currently</h2>
+      <div class="about-bio">
+        <p>
+          Currently, I am finishing up the final year of my bachelor&rsquo;s degree, working in a remote cybersecurity externship program, studying for the next certification, and practicing skills by building projects that I find interesting, useful, and fascinating really. Oh yeah, and looking for a Job lol.
+        </p>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-heading">Beyond the Console</h2>
+      <div class="about-bio">
+        <p>
+          Outside of this tech stuff, I like to mention that I am the first of 4 siblings, so I love community, bringing people together, and facilitating. Whether it is for games, food, music, etc. Basically, when I am not studying and learning or working, I love to have a good time either by myself or by connecting with the people I love and even meeting new ones basically touching some grass. Live&hellip;don&rsquo;t just be alive.
+        </p>
+        <p>
+          I love a good competitive game of table tennis with my friends. I enjoy going to the movies. I like Sci-fi, psychological thrillers, drama, and a good romance or documentary here and there. I am a sucker for being out in nature, like a good hike with a beautiful view, and going to the beach for whatever. I love cars and am very enthusiastic about music, so scenic drives with music are a delight.
+        </p>
+      </div>
+    </section>
+
+    <section class="container" id="projects">
+      <h2 class="chapter-heading"><span class="chapter-heading__num">[02]</span>Projects</h2>
+      <p class="section-lead">Infrastructure projects, systems, and experiments. Each card links to its GitHub repository, and some also have a live demo.</p>
+      <div id="projects-grid" class="deck-grid is-collapsed"></div>
+      <div class="view-more">
+        <button type="button" id="projects-toggle" class="btn btn--ghost">
+          View more <span class="btn__arrow">&darr;</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="container" id="labs">
+      <h2 class="chapter-heading"><span class="chapter-heading__num">[03]</span>Labs</h2>
+      <p class="section-lead">Class labs and hands-on writeups. AWS builds, Azure deployments, network architecture, and security analyses. Each card links to a polished PDF of the full lab.</p>
+      <div id="labs-grid" class="deck-grid is-collapsed"></div>
+      <div class="view-more">
+        <button type="button" id="labs-toggle" class="btn btn--ghost">
+          View more <span class="btn__arrow">&darr;</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="container" id="education">
+      <h2 class="chapter-heading"><span class="chapter-heading__num">[04]</span>ED / Certs</h2>
+      <div class="edu-grid">
+        <a class="edu-card" href="https://www.csun.edu/" target="_blank" rel="noopener" aria-label="Visit CSUN official site (opens in new tab)">
+          <div class="edu-card__cover edu-card__cover--wide">
+            <img src="images/certs/csun.svg" alt="California State University, Northridge">
+          </div>
+          <div class="edu-card__body">
+            <p class="edu-card__eyebrow">Education</p>
+            <h3 class="edu-card__title">California State University, Northridge</h3>
+            <p class="edu-card__meta">Computer Information Technology, Major</p>
+            <p class="edu-card__meta">Finance, Minor</p>
+          </div>
+        </a>
+        <a class="edu-card" href="https://www.credly.com/badges/ab85b44f-fbec-4bd4-84ee-a962426bcf77/public_url" target="_blank" rel="noopener" aria-label="Verify AWS Certified Solutions Architect on Credly (opens in new tab)">
+          <div class="edu-card__cover">
+            <img src="images/certs/aws-saa.png" alt="AWS Certified Solutions Architect">
+          </div>
+          <div class="edu-card__body">
+            <p class="edu-card__eyebrow">Certification</p>
+            <h3 class="edu-card__title">AWS Certified Solutions Architect</h3>
+            <p class="edu-card__meta">Amazon Web Services</p>
+          </div>
+        </a>
+        <a class="edu-card" href="https://www.credly.com/badges/c56cc700-24a5-40ed-8f05-a9e7d9e4b382/public_url" target="_blank" rel="noopener" aria-label="Verify CompTIA Security+ on Credly (opens in new tab)">
+          <div class="edu-card__cover">
+            <img src="images/certs/comptia-secplus.png" alt="CompTIA Security+">
+          </div>
+          <div class="edu-card__body">
+            <p class="edu-card__eyebrow">Certification</p>
+            <h3 class="edu-card__title">CompTIA Security+</h3>
+            <p class="edu-card__meta">CompTIA</p>
+          </div>
         </a>
       </div>
     </section>
 
     <section class="container" id="contact">
-      <h2 class="section-heading">Contact</h2>
+      <h2 class="chapter-heading"><span class="chapter-heading__num">[05]</span>Contact</h2>
       <div class="contact-grid">
         <div class="contact-item">
           <span class="contact__label">Email</span>
@@ -65,12 +262,14 @@
     </section>
   </main>
 
-  <div data-include="partials/footer.html"></div>
+  <div data-include="partials/footer.html?v=10"></div>
 
-  <script src="data/site.js"></script>
-  <script src="data/projects.js"></script>
-  <script src="assets/js/cards.js"></script>
-  <script src="assets/js/includes.js"></script>
-  <script src="assets/js/home.js"></script>
+  <script src="data/site.js?v=10"></script>
+  <script src="data/projects.js?v=10"></script>
+  <script src="data/labs.js?v=10"></script>
+  <script src="assets/js/cards.js?v=10"></script>
+  <script src="assets/js/includes.js?v=10"></script>
+  <script src="assets/js/labs.js?v=10"></script>
+  <script src="assets/js/home.js?v=10"></script>
 </body>
 </html>

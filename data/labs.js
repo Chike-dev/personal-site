@@ -1,4 +1,4 @@
-// LABS — the polished class-lab entries that appear on labs.html.
+// LABS — the polished class-lab entries that appear in the #labs section of index.html.
 // Each entry supports:
 //   number       — display index like "001"
 //   title        — the lab name (portfolio-quality, not class-syllabus style)

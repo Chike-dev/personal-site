@@ -1,12 +1,14 @@
-// Home page hydration:
-//   1. Renders the top 3 projects into #featured-grid.
-//   2. Fills in today's date in #today.
+// Single-page hydration:
+//   1. Renders all projects into #projects-grid
+//   2. Sets today's date in #today
+//   3. Wires the labs "View more" toggle
+//   4. Highlights the nav link matching the section currently in view
 
 (function () {
-  // Featured project cards
-  const grid = document.getElementById('featured-grid');
-  if (grid && window.PROJECTS && window.renderProjectCard) {
-    grid.innerHTML = window.PROJECTS.slice(0, 3).map(window.renderProjectCard).join('');
+  // Projects grid — render everything (no top-N truncation)
+  const projectsGrid = document.getElementById('projects-grid');
+  if (projectsGrid && window.PROJECTS && window.renderProjectCard) {
+    projectsGrid.innerHTML = window.PROJECTS.map(window.renderProjectCard).join('');
   }
 
   // Auto-updating date
@@ -19,5 +21,60 @@
     ];
     const d = new Date();
     dateEl.textContent = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  // About "Read more" toggle — brief summary shown; full bio hidden until expanded
+  const aboutFull = document.querySelector('.about-bio--full');
+  const aboutToggle = document.getElementById('about-toggle');
+  if (aboutFull && aboutToggle) {
+    aboutToggle.addEventListener('click', () => {
+      const expanded = !aboutFull.hasAttribute('hidden') ? false : true;
+      if (expanded) {
+        aboutFull.removeAttribute('hidden');
+        aboutToggle.innerHTML = 'Hide connection <span class="btn__arrow">&uarr;</span>';
+      } else {
+        aboutFull.setAttribute('hidden', '');
+        aboutToggle.innerHTML = 'Read connection <span class="btn__arrow">&darr;</span>';
+      }
+    });
+  }
+
+  // Labs "View more" toggle — first 3 shown, rest hidden until expanded
+  bindGridToggle('labs-grid', 'labs-toggle', 'labs');
+  // Projects "View more" toggle — first 3 shown, rest hidden until expanded
+  bindGridToggle('projects-grid', 'projects-toggle', 'projects');
+
+  function bindGridToggle(gridId, toggleId, sectionId) {
+    const grid = document.getElementById(gridId);
+    const toggle = document.getElementById(toggleId);
+    if (!grid || !toggle) return;
+    toggle.addEventListener('click', () => {
+      const collapsed = grid.classList.toggle('is-collapsed');
+      toggle.innerHTML = collapsed
+        ? 'View more <span class="btn__arrow">&darr;</span>'
+        : 'Show fewer <span class="btn__arrow">&uarr;</span>';
+      if (collapsed) {
+        const section = document.getElementById(sectionId);
+        section && section.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+    });
+  }
+
+  // Active-section nav highlight
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav__links a[href^="#"]');
+  if (sections.length && navLinks.length && 'IntersectionObserver' in window) {
+    const linkByHash = new Map();
+    navLinks.forEach(a => linkByHash.set(a.getAttribute('href'), a));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('is-active'));
+          const active = linkByHash.get('#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(s => observer.observe(s));
   }
 })();
