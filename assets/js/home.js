@@ -60,6 +60,50 @@
     });
   }
 
+  // Contact form — click the email link to reveal the message box
+  const emailToggle = document.getElementById('email-toggle');
+  const contactForm = document.getElementById('contact-form');
+  if (emailToggle && contactForm) {
+    emailToggle.style.cursor = 'pointer';
+    emailToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      contactForm.removeAttribute('hidden');
+      emailToggle.setAttribute('aria-expanded', 'true');
+      contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      contactForm.querySelector('input[name="name"]')?.focus({ preventScroll: true });
+    });
+  }
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = contactForm.querySelector('.contact-form__status');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtn = submitBtn.innerHTML;
+      status.className = 'contact-form__status';
+      status.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending…';
+      try {
+        const body = new URLSearchParams(new FormData(contactForm)).toString();
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        status.className = 'contact-form__status contact-form__status--ok';
+        status.textContent = 'Message sent. I will reply to your email.';
+        contactForm.reset();
+      } catch (err) {
+        status.className = 'contact-form__status contact-form__status--error';
+        status.textContent = 'Something went wrong. Please try again or email me directly.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtn;
+      }
+    });
+  }
+
   // Active-section nav highlight
   const sections = document.querySelectorAll('main section[id]');
   const navLinks = document.querySelectorAll('.nav__links a[href^="#"]');

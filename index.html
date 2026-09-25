@@ -21,10 +21,10 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap">
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=13">
+  <link rel="stylesheet" href="assets/css/styles.css?v=14">
 </head>
 <body id="top">
-  <div data-include="partials/nav.html?v=13"></div>
+  <div data-include="partials/nav.html?v=14"></div>
 
   <main>
     <section class="hero container">
@@ -264,7 +264,8 @@
       <div class="contact-grid">
         <div class="contact-item">
           <span class="contact__label">Email</span>
-          <span class="contact__value"><a data-hydrate="email"></a></span>
+          <span class="contact__value"><a id="email-toggle" data-hydrate="email" aria-expanded="false" aria-controls="contact-form"></a></span>
+          <span class="contact__hint">click to send a message</span>
         </div>
         <div class="contact-item">
           <span class="contact__label">GitHub</span>
@@ -275,17 +276,49 @@
           <span class="contact__value"><a data-hydrate="linkedin"></a></span>
         </div>
       </div>
+
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="contact-form"
+        class="contact-form"
+        hidden>
+        <input type="hidden" name="form-name" value="contact">
+        <p class="contact-form__hp" hidden>
+          <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field"></label>
+        </p>
+        <label class="contact-form__field">
+          <span class="contact-form__label">Your name</span>
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label class="contact-form__field">
+          <span class="contact-form__label">Your email</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label class="contact-form__field">
+          <span class="contact-form__label">Message</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <div class="contact-form__actions">
+          <button type="submit" class="btn btn--primary">
+            Send message <span class="btn__arrow">&rarr;</span>
+          </button>
+        </div>
+        <p class="contact-form__status" role="status" aria-live="polite"></p>
+      </form>
     </section>
   </main>
 
-  <div data-include="partials/footer.html?v=13"></div>
+  <div data-include="partials/footer.html?v=14"></div>
 
-  <script src="data/site.js?v=13"></script>
-  <script src="data/projects.js?v=13"></script>
-  <script src="data/labs.js?v=13"></script>
-  <script src="assets/js/cards.js?v=13"></script>
-  <script src="assets/js/includes.js?v=13"></script>
-  <script src="assets/js/labs.js?v=13"></script>
-  <script src="assets/js/home.js?v=13"></script>
+  <script src="data/site.js?v=14"></script>
+  <script src="data/projects.js?v=14"></script>
+  <script src="data/labs.js?v=14"></script>
+  <script src="assets/js/cards.js?v=14"></script>
+  <script src="assets/js/includes.js?v=14"></script>
+  <script src="assets/js/labs.js?v=14"></script>
+  <script src="assets/js/home.js?v=14"></script>
 </body>
 </html>

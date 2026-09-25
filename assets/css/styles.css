@@ -647,6 +647,86 @@ section { padding-block: clamp(3rem, 7vw, 5.5rem); }
   word-break: break-word;
 }
 .contact__value a:hover { color: var(--accent); border-color: var(--accent); }
+.contact__hint {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  margin-top: 0.35rem;
+}
+
+/* =========================================================================
+   Contact form — inline message box revealed by clicking the email
+   ========================================================================= */
+.contact-form {
+  margin-top: 2.25rem;
+  padding: 1.5rem;
+  background: color-mix(in oklab, var(--bg-elevated) 82%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 560px;
+}
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.contact-form__label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.contact-form input,
+.contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.7rem 0.85rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 160ms var(--ease), background 160ms var(--ease);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+.contact-form__actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+.contact-form__status {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  line-height: 1.4;
+  min-height: 1.2em;
+}
+.contact-form__status--ok { color: var(--fg); }
+.contact-form__status--error { color: #B91C1C; }
+.contact-form__hp {
+  position: absolute;
+  left: -10000px;
+  height: 0;
+  overflow: hidden;
+}
 
 /* =========================================================================
    Footer
