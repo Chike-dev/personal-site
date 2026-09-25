@@ -10,6 +10,9 @@ window.renderProjectCard = function (p) {
   const descHtml = p.description
     ? `<p class="deck__desc">${escapeHtml(p.description)}</p>`
     : '';
+  const statusHtml = p.status
+    ? `<p class="deck__status"><span class="deck__status-dot" aria-hidden="true"></span>${escapeHtml(p.status)}&hellip;</p>`
+    : '';
 
   const image = p.image
     ? `<img class="deck__image" src="${escapeHtml(p.image)}" alt="${title}">`
@@ -30,6 +33,7 @@ window.renderProjectCard = function (p) {
       <div class="deck__body">
         <p class="deck__num">N&ordm;&nbsp;${num}</p>
         <h3 class="deck__title">${title}</h3>
+        ${statusHtml}
         ${descHtml}
         ${tags}
         ${linksHtml}
