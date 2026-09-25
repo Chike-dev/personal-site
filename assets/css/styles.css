@@ -616,8 +616,11 @@ section { padding-block: clamp(3rem, 7vw, 5.5rem); }
    ========================================================================= */
 .contact-grid {
   display: grid;
-  gap: 2rem 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem 2.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) {
+  .contact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 .contact-item {
   display: flex;
