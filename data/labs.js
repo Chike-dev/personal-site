@@ -16,66 +16,18 @@
 window.LABS = [
   {
     number: "001",
-    title: "PayBridge",
-    subtitle: "Fintech Compliance Build on AWS",
-    course: "CIT 360",
-    date: "June 2026",
-    description: "Compliance-focused AWS environment for a fictional fintech. Centralized IAM with MFA and least-privilege groups, EC2 inside a locked-down VPC, S3 encrypted with a customer-managed KMS key, CloudTrail audit logging, and CloudWatch alarms. Every control mapped to PCI-DSS and SOX obligations.",
-    tags: ["AWS", "IAM", "KMS", "CloudTrail", "PCI-DSS", "SOX"],
-    coverType: "aws-compliance",
-    pdf: "labs/paybridge.pdf",
+    title: "Denial-of-Service in Docker",
+    subtitle: "Containerized DoS Simulation & Analysis",
+    course: "COMP 424 — Computer Security",
+    date: "August 2026",
+    description: "Docker Compose stack (Nginx web server, client, and monitor). Ran Apache Bench load tests at light / medium / heavy concurrency (500 → 5,000 requests), captured the TCP three-way handshake in Wireshark, and monitored container CPU + network I/O under stress via docker stats.",
+    tags: ["Docker", "Docker Compose", "Nginx", "DoS", "Apache Bench", "Wireshark", "Security"],
+    coverType: "docker",
+    pdf: "labs/docker-dos-lab.pdf",
     credit: null
   },
   {
     number: "002",
-    title: "ChartPath Medical",
-    subtitle: "EMR Platform on Azure",
-    course: "CIT 360",
-    date: "June 2026",
-    description: "Electronic medical records platform for a fictional clinical network. Azure Cosmos DB with continuous backup for patient records, geo-redundant blob storage for uploads, archive-tier retention for older records, and role-based access for two subsidiary clinics.",
-    tags: ["Azure", "Cosmos DB", "RBAC", "Geo-Redundancy", "Healthcare"],
-    coverType: "azure-cloud",
-    pdf: "labs/chartpath-medical.pdf",
-    credit: null
-  },
-  {
-    number: "003",
-    title: "EVIL Airport",
-    subtitle: "Multi-Region DR on Azure",
-    course: "CIT 360",
-    date: "June 2026",
-    description: "Cloud environment for a fictional overflow airport serving airline and shipping partners. Geo-redundant storage, private routes between VMs, RBAC for FedEx and Delta partner identities, archive-tier document retention, and a hardened public interface.",
-    tags: ["Azure", "VMs", "RBAC", "DR", "Networking"],
-    coverType: "azure-cloud",
-    pdf: "labs/evil-airport.pdf",
-    credit: null
-  },
-  {
-    number: "004",
-    title: "CSUN Campus IT Specification",
-    subtitle: "Environment Design for 41,000 Users",
-    course: "CIT 360",
-    date: "June 2026",
-    description: "Full computing environment specification for a large public university. Bandwidth vs. throughput, SLA math with error budgets, MTBF/MTTR analysis, HA design, and M/M/c queuing models for capacity planning.",
-    tags: ["Enterprise Architecture", "SLA Design", "Queuing Models", "HA"],
-    coverType: "network-scale",
-    pdf: "labs/csun-campus-it.pdf",
-    credit: null
-  },
-  {
-    number: "005",
-    title: "MSU Enterprise Network Design",
-    subtitle: "Scalable Hybrid Campus Architecture",
-    course: "Enterprise System Architecture",
-    date: "June 2026",
-    description: "Three-tier network design for a fictional public university (20,000 students, 12 buildings). Core / distribution / access hierarchy behind a redundant internet edge, tied to a data-center block, with segmentation and 802.1X authentication throughout.",
-    tags: ["Network Architecture", "3-Tier", "802.1X", "Redundancy"],
-    coverType: "network-tiered",
-    pdf: "labs/msu-network-design.pdf",
-    credit: null
-  },
-  {
-    number: "006",
     title: "CSUN Network Security Analysis",
     subtitle: "Threat Model & Controls (NIST CSF)",
     course: "IS 435 — Network & Security in Business",
@@ -87,7 +39,67 @@ window.LABS = [
     credit: "Group project with T. Takahashi, A. Moreira, E. Bazuaye. My contributions: threat modeling & risk analysis (T-01 to T-09), security controls & NIST CSF framework mapping, and report structure / editorial lead."
   },
   {
+    number: "003",
+    title: "ChartPath Medical",
+    subtitle: "EMR Platform on Azure",
+    course: "CIT 360",
+    date: "June 2026",
+    description: "Electronic medical records platform for a fictional clinical network. Azure Cosmos DB with continuous backup for patient records, geo-redundant blob storage for uploads, archive-tier retention for older records, and role-based access for two subsidiary clinics.",
+    tags: ["Azure", "Cosmos DB", "RBAC", "Geo-Redundancy", "Healthcare"],
+    coverType: "azure-cloud",
+    pdf: "labs/chartpath-medical.pdf",
+    credit: null
+  },
+  {
+    number: "004",
+    title: "PayBridge",
+    subtitle: "Fintech Compliance Build on AWS",
+    course: "CIT 360",
+    date: "June 2026",
+    description: "Compliance-focused AWS environment for a fictional fintech. Centralized IAM with MFA and least-privilege groups, EC2 inside a locked-down VPC, S3 encrypted with a customer-managed KMS key, CloudTrail audit logging, and CloudWatch alarms. Every control mapped to PCI-DSS and SOX obligations.",
+    tags: ["AWS", "IAM", "KMS", "CloudTrail", "PCI-DSS", "SOX"],
+    coverType: "aws-compliance",
+    pdf: "labs/paybridge.pdf",
+    credit: null
+  },
+  {
+    number: "005",
+    title: "EVIL Airport",
+    subtitle: "Multi-Region DR on Azure",
+    course: "CIT 360",
+    date: "June 2026",
+    description: "Cloud environment for a fictional overflow airport serving airline and shipping partners. Geo-redundant storage, private routes between VMs, RBAC for FedEx and Delta partner identities, archive-tier document retention, and a hardened public interface.",
+    tags: ["Azure", "VMs", "RBAC", "DR", "Networking"],
+    coverType: "azure-cloud",
+    pdf: "labs/evil-airport.pdf",
+    credit: null
+  },
+  {
+    number: "006",
+    title: "CSUN Campus IT Specification",
+    subtitle: "Environment Design for 41,000 Users",
+    course: "CIT 360",
+    date: "June 2026",
+    description: "Full computing environment specification for a large public university. Bandwidth vs. throughput, SLA math with error budgets, MTBF/MTTR analysis, HA design, and M/M/c queuing models for capacity planning.",
+    tags: ["Enterprise Architecture", "SLA Design", "Queuing Models", "HA"],
+    coverType: "network-scale",
+    pdf: "labs/csun-campus-it.pdf",
+    credit: null
+  },
+  {
     number: "007",
+    title: "MSU Enterprise Network Design",
+    subtitle: "Scalable Hybrid Campus Architecture",
+    course: "Enterprise System Architecture",
+    date: "June 2026",
+    description: "Three-tier network design for a fictional public university (20,000 students, 12 buildings). Core / distribution / access hierarchy behind a redundant internet edge, tied to a data-center block, with segmentation and 802.1X authentication throughout.",
+    tags: ["Network Architecture", "3-Tier", "802.1X", "Redundancy"],
+    coverType: "network-tiered",
+    pdf: "labs/msu-network-design.pdf",
+    credit: null
+  },
+  {
+    number: "008",
     title: "Networking Fundamentals",
     subtitle: "ACLs, Switching, TCP/IP, WPA2 (Cisco Packet Tracer)",
     course: "Networking Fundamentals",
@@ -102,18 +114,6 @@ window.LABS = [
       { label: "TCP/IP layer inspection (.pka)", path: "labs/packet-tracer/tcpip-layers.pka" },
       { label: "WPA2 wireless setup (.pka)", path: "labs/packet-tracer/wpa2-setup.pka" }
     ],
-    credit: null
-  },
-  {
-    number: "008",
-    title: "Denial-of-Service in Docker",
-    subtitle: "Containerized DoS Simulation & Analysis",
-    course: "COMP 424 — Computer Security",
-    date: "August 2026",
-    description: "Docker Compose stack (Nginx web server, client, and monitor). Ran Apache Bench load tests at light / medium / heavy concurrency (500 → 5,000 requests), captured the TCP three-way handshake in Wireshark, and monitored container CPU + network I/O under stress via docker stats.",
-    tags: ["Docker", "Docker Compose", "Nginx", "DoS", "Apache Bench", "Wireshark", "Security"],
-    coverType: "docker",
-    pdf: "labs/docker-dos-lab.pdf",
     credit: null
   },
   {

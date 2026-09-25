@@ -24,7 +24,7 @@ window.PROJECTS = [
     number: "002",
     title: "Building…",
     description: "",
-    tags: ["Docker", "CI/CD", "GitHub Actions"],
+    tags: [],
     image: null,
     github: null,
     live: null
@@ -33,7 +33,7 @@ window.PROJECTS = [
     number: "003",
     title: "In Planning…",
     description: "",
-    tags: ["Kubernetes", "AWS EKS"],
+    tags: [],
     image: null,
     github: null,
     live: null
@@ -42,7 +42,7 @@ window.PROJECTS = [
     number: "004",
     title: "In Planning…",
     description: "",
-    tags: ["Security", "IAM", "AWS"],
+    tags: [],
     image: null,
     github: null,
     live: null
@@ -51,7 +51,7 @@ window.PROJECTS = [
     number: "005",
     title: "In Planning…",
     description: "",
-    tags: ["Serverless", "Lambda"],
+    tags: [],
     image: null,
     github: null,
     live: null
@@ -60,7 +60,7 @@ window.PROJECTS = [
     number: "006",
     title: "In Planning…",
     description: "",
-    tags: ["Networking", "VPC"],
+    tags: [],
     image: null,
     github: null,
     live: null
