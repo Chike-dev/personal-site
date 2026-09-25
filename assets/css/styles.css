@@ -1480,7 +1480,7 @@ section { padding-block: clamp(3rem, 7vw, 5.5rem); }
 .beyond__text p { margin: 0; }
 .beyond__img {
   margin: 0;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 9 / 10;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -1495,5 +1495,6 @@ section { padding-block: clamp(3rem, 7vw, 5.5rem); }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 22%;
   display: block;
 }

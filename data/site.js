@@ -17,6 +17,14 @@ window.SITE = {
     url: "https://www.linkedin.com/in/chike-okigbo-8532b732a/",
     handle: "chike-okigbo"
   },
+  instagram: {
+    url: "https://www.instagram.com/chyyke_/",
+    handle: "@chyyke_"
+  },
+  messenger: {
+    url: "https://www.facebook.com/profile.php?id=100069828946413",
+    handle: "Send a message"
+  },
 
   // Resume link — set to a URL like "resume.pdf" to show a download button.
   // Leave null to hide the resume button.
