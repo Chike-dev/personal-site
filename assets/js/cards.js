@@ -7,7 +7,9 @@ window.renderProjectCard = function (p) {
 
   const num = escapeHtml(p.number || '');
   const title = escapeHtml(p.title || 'Untitled');
-  const desc = escapeHtml(p.description || '');
+  const descHtml = p.description
+    ? `<p class="deck__desc">${escapeHtml(p.description)}</p>`
+    : '';
 
   const image = p.image
     ? `<img class="deck__image" src="${escapeHtml(p.image)}" alt="${title}">`
@@ -28,7 +30,7 @@ window.renderProjectCard = function (p) {
       <div class="deck__body">
         <p class="deck__num">N&ordm;&nbsp;${num}</p>
         <h3 class="deck__title">${title}</h3>
-        <p class="deck__desc">${desc}</p>
+        ${descHtml}
         ${tags}
         ${linksHtml}
       </div>
