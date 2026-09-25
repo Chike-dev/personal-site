@@ -14,9 +14,14 @@ window.renderProjectCard = function (p) {
     ? `<p class="deck__status"><span class="deck__status-dot" aria-hidden="true"></span>${escapeHtml(p.status)}&hellip;</p>`
     : '';
 
-  const image = p.image
-    ? `<img class="deck__image" src="${escapeHtml(p.image)}" alt="${title}">`
-    : `<div class="deck__image deck__image--empty">N&ordm;&nbsp;${num}</div>`;
+  let image;
+  if (p.image) {
+    image = `<img class="deck__image" src="${escapeHtml(p.image)}" alt="${title}">`;
+  } else if (p.cover) {
+    image = `<div class="deck__image deck__cover deck__cover--${escapeHtml(p.cover)}" aria-hidden="true"><span class="deck__cover__num">N&ordm;&nbsp;${num}</span></div>`;
+  } else {
+    image = `<div class="deck__image deck__image--empty">N&ordm;&nbsp;${num}</div>`;
+  }
 
   const tags = (p.tags && p.tags.length)
     ? `<div class="deck__tags">${p.tags.map((t) => `<span>${escapeHtml(t)}</span>`).join('')}</div>`

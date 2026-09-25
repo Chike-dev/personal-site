@@ -22,11 +22,12 @@ window.PROJECTS = [
   },
   {
     number: "002",
-    title: "Enterprise AD & IT Service Desk Lab",
+    title: "Enterprise AD & IT Help Desk Lab",
     status: "Building",
     description: "Windows Server 2022 Active Directory environment on AWS, deployed via Terraform for 25 users across five departments. Full AD DS, DNS, OUs, Group Policy, and file-share permissions; PowerShell provisioning runbooks; Jira Service Management help desk with SLAs, and 20 simulated Tier 1/2 tickets resolved.",
     tags: ["AWS", "Windows Server 2022", "Active Directory", "Terraform", "PowerShell", "Jira"],
     image: null,
+    cover: "ad-helpdesk",
     github: null,
     live: null
   },

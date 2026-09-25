@@ -226,18 +226,22 @@ p:last-child { margin-bottom: 0; }
   gap: clamp(1.25rem, 3vw, 2rem);
   align-items: start;
 }
+.hero__text { display: contents; }
 .hero__body { grid-area: body; min-width: 0; }
 @media (min-width: 760px) {
   .hero__grid {
     grid-template-columns: minmax(0, 1fr) clamp(280px, 32vw, 400px);
-    grid-template-areas:
-      "name portrait"
-      "body portrait";
-    align-content: center;
-    align-items: start;
+    grid-template-areas: "text portrait";
+    align-items: center;
     column-gap: clamp(2rem, 4vw, 3rem);
-    row-gap: 0.75rem;
+    row-gap: 0;
   }
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    grid-area: text;
+  }
+  .hero__body { grid-area: auto; }
 }
 .hero__portrait {
   grid-area: portrait;
@@ -286,6 +290,7 @@ p:last-child { margin-bottom: 0; }
 }
 @media (min-width: 760px) {
   .hero__name {
+    grid-area: auto;
     font-size: clamp(1.75rem, 4.25vw, 2.75rem);
     margin: 0 0 1rem;
   }
@@ -570,6 +575,79 @@ section { padding-block: clamp(3rem, 7vw, 5.5rem); }
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   letter-spacing: 0.08em;
   color: var(--fg-subtle);
+}
+
+/* ==== Themed project cover: AD & Help Desk (project 002) ==== */
+.deck__cover {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deck__cover__num {
+  position: absolute;
+  top: 0.85rem;
+  left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--chalk-warm);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  z-index: 3;
+}
+.deck__cover--ad-helpdesk {
+  background:
+    radial-gradient(circle at 22% 30%, rgba(0, 164, 239, 0.14), transparent 55%),
+    radial-gradient(circle at 78% 72%, rgba(154, 52, 18, 0.14), transparent 55%),
+    linear-gradient(135deg, #0B1220 0%, #1B2434 100%);
+}
+/* Windows Server 2022 stack — three horizontal bars */
+.deck__cover--ad-helpdesk::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  aspect-ratio: 1 / 1;
+  background:
+    linear-gradient(180deg,
+      #00A4EF 0 22%,
+      transparent 22% 35%,
+      #00A4EF 35% 57%,
+      transparent 57% 70%,
+      #00A4EF 70% 92%,
+      transparent 92% 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 26px rgba(0, 164, 239, 0.35);
+  z-index: 1;
+}
+/* Data dot flowing left → server → right (user request → ticket resolved) */
+.deck__cover--ad-helpdesk::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22D3EE;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.9);
+  transform: translateY(-50%);
+  animation: ad-helpdesk-flow 3.6s cubic-bezier(0.4, 0, 0.4, 1) infinite;
+  z-index: 2;
+}
+@keyframes ad-helpdesk-flow {
+  0%   { left: 3%;  opacity: 0; background: #22D3EE; box-shadow: 0 0 10px rgba(34, 211, 238, 0.9); }
+  15%  { opacity: 1; }
+  49%  { left: 46%; background: #22D3EE; box-shadow: 0 0 10px rgba(34, 211, 238, 0.9); }
+  51%  { left: 54%; background: #F97316; box-shadow: 0 0 10px rgba(249, 115, 22, 0.9); }
+  85%  { opacity: 1; }
+  100% { left: 97%; opacity: 0; background: #F97316; box-shadow: 0 0 10px rgba(249, 115, 22, 0.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .deck__cover--ad-helpdesk::after { animation: none; left: 50%; }
 }
 .deck__body {
   padding: 1.5rem 1.5rem 1.75rem;
