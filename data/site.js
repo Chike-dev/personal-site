@@ -23,7 +23,7 @@ window.SITE = {
   },
   messenger: {
     url: "https://www.facebook.com/profile.php?id=100069828946413",
-    handle: "Send a message"
+    handle: "Chike Okigbo"
   },
 
   // Resume link — set to a URL like "resume.pdf" to show a download button.

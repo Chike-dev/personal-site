@@ -218,8 +218,8 @@ p:last-child { margin-bottom: 0; }
 }
 .hero__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 34%);
+  gap: clamp(1rem, 3vw, 2.5rem);
   align-items: center;
 }
 @media (min-width: 760px) {
@@ -242,12 +242,12 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  order: -1;
-  max-width: 400px;
   width: 100%;
+  max-width: 200px;
+  justify-self: end;
 }
 @media (min-width: 760px) {
-  .hero__portrait { order: 0; max-width: none; }
+  .hero__portrait { max-width: none; justify-self: stretch; }
 }
 .hero__portrait img {
   width: 100%;
